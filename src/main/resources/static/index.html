@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Shop - Modular Monolith</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- PNotify -->
+    <script src="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/BrightTheme.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="glass">
+        <div class="logo">ELITE SHOP</div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('hero')">Home</a>
+            <a href="#" onclick="showSection('products')">Products</a>
+            <a href="#" id="orders-link" style="display: none;" onclick="showSection('orders')">My Orders</a>
+            <button class="btn btn-secondary" onclick="toggleTheme()">🌓</button>
+            <div id="auth-buttons">
+                <button class="btn btn-primary" onclick="openModal('login-modal')">Login</button>
+            </div>
+            <button class="btn btn-primary" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in">
+            <h1>Experience Premium Shopping</h1>
+            <p>Discover our curated collection of high-end products, delivered with speed and care.</p>
+            <button class="btn btn-primary" onclick="showSection('products')">Explore Products</button>
+        </section>
+
+        <!-- Product Section -->
+        <section id="products" class="products-container" style="display: none;">
+            <div class="product-grid" id="product-list">
+                <!-- Products will be injected here -->
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="products-container" style="display: none;">
+            <h2>Your Order History</h2>
+            <div id="order-list"></div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="cart-drawer glass">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2>Your Cart</h2>
+            <button class="btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" style="margin: 2rem 0;"></div>
+        <div id="cart-total" style="font-weight: 700; margin-bottom: 2rem;">Total: $0</div>
+        <button class="btn btn-primary" style="width: 100%;" onclick="checkout()">Checkout Now</button>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content glass">
+            <h2>Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <p style="margin-top: 1rem; text-align: center;">Don't have an account? <a href="#" onclick="openModal('register-modal')">Register</a></p>
+            </form>
+            <button class="btn" style="position: absolute; top: 1rem; right: 1rem;" onclick="closeModal('login-modal')">✕</button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content glass">
+            <h2>Register</h2>
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+            <button class="btn" style="position: absolute; top: 1rem; right: 1rem;" onclick="closeModal('register-modal')">✕</button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
