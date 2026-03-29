@@ -20,6 +20,7 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    @SuppressWarnings("null")
     public AuthResponse register(AuthRequest request) {
         var user = User.builder()
                 .username(request.getUsername())

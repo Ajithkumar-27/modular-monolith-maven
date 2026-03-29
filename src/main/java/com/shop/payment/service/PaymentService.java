@@ -18,6 +18,7 @@ public class PaymentService {
     private final OrderService orderService;
 
     @Transactional
+    @SuppressWarnings("null")
     public Payment processPayment(Long orderId, BigDecimal amount) {
         // Simple simulation: All payments are successful
         Payment payment = Payment.builder()

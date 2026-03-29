@@ -1,7 +1,6 @@
 package com.shop.security.service;
 
 import com.shop.user.repository.UserRepository;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -18,18 +18,22 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
 
+    @SuppressWarnings("null")
     public Product saveProduct(Product product) {
         return productRepository.save(product);
     }
 
+    @SuppressWarnings("null")
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 
+    @SuppressWarnings("null")
     public boolean reduceStock(Long productId, Integer quantity) {
         return productRepository.findById(productId).map(product -> {
             if (product.getStockQuantity() >= quantity) {

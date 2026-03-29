@@ -24,6 +24,7 @@ public class OrderService {
     private final NotificationService notificationService;
 
     @Transactional
+    @SuppressWarnings("null")
     public Order placeOrder(List<OrderItem> items) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -62,6 +63,7 @@ public class OrderService {
         return orderRepository.findByUserId(user.getId());
     }
 
+    @SuppressWarnings("null")
     public void updateOrderStatus(Long orderId, String status) {
         orderRepository.findById(orderId).ifPresent(order -> {
             order.setStatus(status);

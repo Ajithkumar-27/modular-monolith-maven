@@ -21,6 +21,7 @@ public class DataLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @SuppressWarnings("null")
     public void run(String... args) throws Exception {
         if (productRepository.count() == 0) {
             productRepository.saveAll(List.of(
